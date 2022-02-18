@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'pa-starter-angular';
+  recipeName: any;
+  recipeDescription: any;
+  hideForm = false;
+  noRecipe = true;
+
+
+  onSubmit(name: string, instructions: string): void {
+    this.recipeName = name;
+    this.recipeDescription = instructions;
+    this.hideForm = false;
+    this.noRecipe = false;
+  }
 }
+

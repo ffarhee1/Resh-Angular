@@ -1,5 +1,40 @@
+
+
 <div>
-  <h1 class="doNotRemoveMe">Hello world.</h1>
+  <!-- <h1 class="doNotRemoveMe">Hello world.</h1> -->
   <!-- ^ Do not remove this element ^ -->
-</div>
+
+  <h1>My Recipes</h1>
+  <div role="listitem">
+   {{ recipeName }}
+    </div>
+    <div style="margin-top: 1rem;">
+      {{ recipeDescription }}
+  </div>
+
+    
+
+  <button  *ngIf="!hideForm" (click)="hideForm = !hideForm"> Add Recipes</button>
+
+      <form *ngIf="hideForm" (ngSubmit)="$event.preventDefault()">
+        <div>
+          <label for="recipe-name">recipe-name</label>
+          <input type="text" name="recipe-name"
+           aria-label="recipe-name" role="textbox" #recipeName placeholder="recipe-name" />
+        </div>
+        <div>
+          <label for="recipe-instructions">recipe-instructions</label>
+          <textarea #recipeInstructions role="textbox" name="recipe-instructions"
+           aria-label="recipe-instructions" 
+            placeholder="recipe-instructions"></textarea>
+        </div>
+        <div>
+          <button aria-label="submit button"
+            (click)="onSubmit(recipeName.value, recipeInstructions.value)">Save</button>
+        </div>
+      </form>
+ 
+  <p *ngIf="noRecipe">There are no recipes to list</p>
+</div>    
+
  
